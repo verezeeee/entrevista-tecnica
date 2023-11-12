@@ -11,8 +11,8 @@ import React from "react";
 import { UserContext } from "../contexts/FormContext";
 import verificarSenha from "../utils/verificarSenha";
 import { verificarEmail } from "../utils/verificarEmail";
-// import { cadastrarUsuario } from "../utils/firestore"; TODO
 import Toast from "react-native-toast-message";
+// import registrarUsuario from '../hooks/useAuth' //TODO: Criar hook para registrar usuário
 
 export default function Home({ navigation }) {
   const { nome, setNome, email, setEmail, senha, setSenha } =
@@ -65,12 +65,6 @@ export default function Home({ navigation }) {
             senhaValida === "Senha válida!!" &&
             emailValido === "Email válido!"
           ) {
-            // const user = {
-            //   nome,
-            //   email,
-            //   senha,
-            // };
-            // await cadastrarUsuario(user);
             navigation.navigate("Users");
           } else if (emailValido !== "Email válido!") {
             Toast.show({

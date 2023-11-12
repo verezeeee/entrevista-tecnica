@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID, MESUREMENT_ID } from "@env";
 
 const firebaseConfig = {
@@ -12,7 +12,6 @@ const firebaseConfig = {
   measurementId: process.env.MESUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-export { db };
+export const app = initializeApp(firebaseConfig);
+//Tentei usar o firestore mas não consegui
+//Algum tipo de erro com o firebase está me impedindo de usar os Hooks da firebase, sejam eles de autenticação ou de armazenamento
