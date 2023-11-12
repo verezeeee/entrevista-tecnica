@@ -32,3 +32,5 @@ O Design foi pensado de uma forma intuitiva, acessível e simplificada para o us
 ## 🧱 Arquitetura
 A arquitetura do projeto é uma parte crucial para que o código esteja limpo e que seja de fácil compreensão e manutenção. <br>
 Nesse projeto cada diretório do projeto tem sua própria função, como gerenciamento de estados, telas, navegação, funções e utilitários auxiliares, estão todos separados.
+<hr/>
+<p> Obs: Tentei fazer a implementação do Firebase para a persistência de dados, porém não consegui, algum tipo de erro estava me impedindo de usar os Hooks, sejam de autenticação ou de armazenamento de dados.</p>
