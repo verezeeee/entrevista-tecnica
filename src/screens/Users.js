@@ -18,24 +18,27 @@ export default function Users({ navigation }) {
   const user = [nome, email, senha];
   return (
     <SafeAreaView style={styles.container}>
-      <Pressable
-        onPress={() => {
-          navigation.navigate("Home");
-        }}
-      >
-        <Ionicons name="arrow-back" size={32} color="black" />
-      </Pressable>
       <View>
-        <Text
-          style={{
-            fontSize: 32,
-            fontWeight: "bold",
-            marginBottom: 30,
-            textAlign: "center",
-          }}
-        >
-          Perfil
-        </Text>
+        <View>
+          <Pressable
+            onPress={() => {
+              navigation.navigate("Home");
+            }}
+            style={{ position: "absolute", top: -80, left: 5 }}
+          >
+            <Ionicons name="arrow-back" size={32} color="black" />
+          </Pressable>
+          <Text
+            style={{
+              fontSize: 32,
+              fontWeight: "bold",
+              marginBottom: 30,
+              textAlign: "center",
+            }}
+          >
+            Perfil
+          </Text>
+        </View>
         <View style={[styles.avatar, { backgroundColor: color }]}>
           <Text
             style={{
@@ -96,6 +99,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#dbdbdb",
   },
   avatar: {
     width: 100,

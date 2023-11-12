@@ -5,6 +5,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import React from "react";
 import { UserContext } from "../contexts/FormContext";
@@ -19,6 +20,14 @@ export default function Home({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Image
+        width={200}
+        height={200}
+        style={{ objectFit: "contain" }}
+        source={{
+          uri: "https://academiadodesenvolvedor.com/treinando/pluginfile.php/1/theme_eguru/logo/1691613588/Logo%20branco.png",
+        }}
+      />
       <Text style={styles.text}>Registro</Text>
       <View style={{ gap: 10, marginBottom: 15 }}>
         <TextInput
@@ -42,6 +51,7 @@ export default function Home({ navigation }) {
           style={styles.inputs}
           placeholder="Senha"
           value={senha}
+          autoCorrect={false}
           onChangeText={(text) => {
             setSenha(text);
           }}
@@ -88,7 +98,7 @@ export default function Home({ navigation }) {
           }
         }}
         style={{
-          backgroundColor: "gray",
+          backgroundColor: "#3aa40c",
           padding: 10,
           borderRadius: 12,
           height: 50,
@@ -104,15 +114,17 @@ export default function Home({ navigation }) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 20,
+    fontSize: 28,
     fontWeight: "bold",
-    color: "gray",
+    color: "white",
+    letterSpacing: 2,
     marginBottom: 30,
   },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#696969",
   },
   inputs: {
     padding: 10,
@@ -120,5 +132,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 12,
     width: 310,
+    backgroundColor: "white",
   },
 });
