@@ -10,7 +10,7 @@ Esse projeto foi criado com as tecnologias:
 Projeto feito com React Native com intuito de realizar o registro de usuários, autenticação e por fim o retorno dos dados desse usuário em outra tela.
 
 ## :computer: Instalação 
--Clone o projeto em sua Máquina
+-Clone o projeto em sua Máquina <br>
 -Instale as dependências usando o comando:
 ```console
   npm install
