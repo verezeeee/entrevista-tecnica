@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { UserContext } from "../contexts/FormContext";
 import verificarSenha from "../utils/verificarSenha";
 import { verificarEmail } from "../utils/verificarEmail";
@@ -15,8 +15,18 @@ import Toast from "react-native-toast-message";
 // import registrarUsuario from '../hooks/useAuth' //TODO: Criar hook para registrar usuário
 
 export default function Home({ navigation }) {
+  const [emailValido, setEmailValido] = React.useState(false); //TODO: Criar hook para verificar se o email é válido
   const { nome, setNome, email, setEmail, senha, setSenha } =
     React.useContext(UserContext);
+
+  const handleCheckEmail = async () => {
+    try {
+      const isValid = await verificarEmail(email);
+      setEmailValido(isValid);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -60,34 +70,30 @@ export default function Home({ navigation }) {
       <TouchableOpacity
         onPress={async () => {
           const senhaValida = verificarSenha(senha);
-          const emailValido = verificarEmail(email);
-          if (
-            senhaValida === "Senha válida!!" &&
-            emailValido === "Email válido!"
-          ) {
+          handleCheckEmail();
+          //BUG -- Como a variável de email não é atualizada instantanemente, a verificação pode ocorrer com valores antigos, é recomendado que o usuário clique no botão de cadastro duas vezes para que a verificação ocorra corretamente.
+          if (senhaValida === "Senha válida!!" && emailValido === true) {
+            // registrarUsuario(email, senha, nome) //TODO: Criar hook para registrar usuário utilizando o firebase
             navigation.navigate("Users");
-          } else if (emailValido !== "Email válido!") {
+          } else if (senhaValida !== "Senha válida!!") {
             Toast.show({
               type: "error",
-              position: "top",
-              text1: "Erro",
-              text2: emailValido,
-              visibilityTime: 3000,
-              autoHide: true,
-              bottomOffset: 40,
-              topOffset: 40,
-            });
-          }
-          if (senhaValida !== "Senha válida!!") {
-            Toast.show({
-              type: "error",
-              position: "top",
-              text1: "Erro",
+              text1: "Senha inválida",
               text2: senhaValida,
               visibilityTime: 3000,
               autoHide: true,
+              topOffset: 30,
               bottomOffset: 40,
-              topOffset: 40,
+            });
+          } else if (emailValido !== true) {
+            Toast.show({
+              type: "error",
+              text1: "Email inválido",
+              text2: "Insira um email válido",
+              visibilityTime: 3000,
+              autoHide: true,
+              topOffset: 30,
+              bottomOffset: 40,
             });
           }
         }}

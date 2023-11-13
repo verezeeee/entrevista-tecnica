@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { app } from '../services/firebase';
+import React, { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { app } from "../services/firebase";
+import { SafeAreaView, Text, View } from "react-native";
 
 const AuthContext = React.createContext();
 
@@ -10,17 +11,20 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const auth = getAuth(app);
-    const unsubscribe = onAuthStateChanged(auth, user => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // or your custom loading state
+    return (
+      <SafeAreaView>
+        <Text>Carregando...</Text>
+      </SafeAreaView>
+    );
   }
 
   return (
