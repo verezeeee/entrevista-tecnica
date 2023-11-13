@@ -34,3 +34,4 @@ A arquitetura do projeto é uma parte crucial para que o código esteja limpo e 
 Nesse projeto cada diretório do projeto tem sua própria função, como gerenciamento de estados, telas, navegação, funções e utilitários auxiliares, estão todos separados.
 <hr/>
 <p> Obs: Tentei fazer a implementação do Firebase para a persistência de dados, porém não consegui, algum tipo de erro estava me impedindo de usar os Hooks, sejam de autenticação ou de armazenamento de dados.</p>
+<p>Há um pequeno bug na verificação de email, como a variável de email não é atualizada instantanemente, a verificação pode ocorrer com valores antigos,então é recomendado que o usuário clique no botão de cadastro duas vezes para que a verificação ocorra corretamente. </p>
